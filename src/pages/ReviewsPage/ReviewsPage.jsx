@@ -1,7 +1,7 @@
 import './ReviewsPage.css'
 
-const ReviewPage = ()=>{
+const ReviewsPage = ()=>{
 
 }
 
-export default ReviewPage;
+export default ReviewsPage;
