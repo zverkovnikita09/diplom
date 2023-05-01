@@ -29,38 +29,19 @@
   object-position: center;
   transform: scale(1.01);
   z-index: 0;
-  animation: backgroundAnim 1.5s 0.5s forwards;
+  filter: blur(3px) brightness(50%);
 }
 
 .main__button-down {
   position: absolute;
-  width: 86px;
-  height: 86px;
+  width: 60px;
+  height: 60px;
   bottom: 10px;
   left: calc(50% - 86px /2);
-  transform: translateY(-20px);
+  transition: 0.5s;
+}
+
+.main__button-down.active{
+  transform: translateY(30px);
   opacity: 0;
-  animation: arrowDown 1s 2s ease-in-out forwards;
-}
-
-@keyframes backgroundAnim {
-  from {
-    filter: blur(0) brightness(100%);
-  }
-
-  to {
-    filter: blur(3px) brightness(50%);
-  }
-}
-
-@keyframes arrowDown {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }

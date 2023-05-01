@@ -1,11 +1,13 @@
-import Main from '../Main/Main';
+import FirstScreen from '../FIrstScreen/FirstScreen';
+import SecondScreen from '../SecondScreen/SecondScreen';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 const App = ()=> {
   return (
     <Routes>
-      <Route path='/' element={<Main/>}/>
+      <Route path='/' element={<FirstScreen/>}/>
+      <Route path='/search' element={<SecondScreen/>}/>
     </Routes>
   );
 }

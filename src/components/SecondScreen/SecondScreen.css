@@ -1,0 +1,9 @@
+.second-screen {
+  background-color: #141517;
+  min-height: 100vh;
+}
+.second-screen__title{
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+}
