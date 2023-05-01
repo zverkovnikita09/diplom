@@ -14,7 +14,9 @@ const FirstScreen = ({ pages }) => {
     mousewheel={true}
     onSwiper={setSwiper}
     modules={[Mousewheel]}
+    followFinger={false}
     speed={1000}
+    
     className="scrollable"
   >
     <SwiperSlide><Main scrollPage={()=>swiper.slideTo(1)}/></SwiperSlide>
