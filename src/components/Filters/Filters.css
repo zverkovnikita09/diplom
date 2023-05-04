@@ -28,6 +28,11 @@
   column-gap: 15px;
 }
 
+.filters__districts{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .form-group{
   width: 50%;
 }
@@ -38,4 +43,16 @@
 
 .filters__label{
   display: flex;
+}
+
+input.hidden{
+  clip: rect(0 0 0 0);
+  border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
