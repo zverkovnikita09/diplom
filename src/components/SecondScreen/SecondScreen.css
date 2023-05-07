@@ -1,6 +1,7 @@
 .second-screen {
   background-color: #141517;
   min-height: 100vh;
+  padding-bottom: 50px;
 }
 .second-screen__title{
   color: #fff;

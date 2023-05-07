@@ -6,25 +6,31 @@ import { createSearchParams, useNavigate } from 'react-router-dom';
 
 const Filters = () => {
   const navigate = useNavigate();
-  const [delivery, setDelivery] = useState(false);
-  const [eatPlace, setEatPlace] = useState(false);
-  const [districts, setDistricts] = useState({
-    'Коминтерновский': false,
-    'Центральный': false,
-    'Ленинский': false,
-    'Советский': false,
-    'Железнодорожный': false,
-    'Левобережный': false
+  const [formData, setFormData] = useState({
+    delivery: false,
+    eatPlace: false,
+    districts: {
+      'Коминтерновский': false,
+      'Центральный': false,
+      'Ленинский': false,
+      'Советский': false,
+      'Железнодорожный': false,
+      'Левобережный': false
+    }
   })
 
-  const updateDistricts = (item) => {
+ /*  const updateDistricts = (item) => {
     const districtsUpdated = { ...districts, [item]: !districts[item] };
     setDistricts(districtsUpdated);
+  } */
+
+  const handleChange = (e) =>{
+    
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let params = {}; 
+    let params = {};
     navigate({
       pathname: '/search',
       search: `?${createSearchParams(params)}`,
@@ -35,7 +41,7 @@ const Filters = () => {
     <img src={background} alt="Фон" className='filters__background' width='100%' height='100%' />
     <div className='filters__content'>
       <form className='filters__form' onSubmit={e => handleSubmit(e)}>
-        <div className='form-group'>
+        {/* <div className='form-group'>
           <h2 className='filters__label'>Цена</h2>
           <h2 className='filters__label'>Ассортимент</h2>
           <h2 className='filters__label'>Качество обслуживания</h2>
@@ -49,7 +55,7 @@ const Filters = () => {
               return <CheckBox id={item} value={item} checked={districts[item]} setChecked={e => updateDistricts(e.target.value)}>{item}</CheckBox>
             })}
           </div>
-        </div>
+        </div> */}
         <button>Искать</button>
       </form>
     </div>
