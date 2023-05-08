@@ -8,6 +8,15 @@
   font-family: inherit;
 }
 
+body{
+  height: 100vh;
+}
+
+#root{
+  height: 100%;
+  overflow: auto;
+}
+
 h1,
 h2,
 h3,

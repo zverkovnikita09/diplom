@@ -19,13 +19,23 @@ const Filters = () => {
     }
   })
 
- /*  const updateDistricts = (item) => {
-    const districtsUpdated = { ...districts, [item]: !districts[item] };
-    setDistricts(districtsUpdated);
-  } */
+  /*  const updateDistricts = (item) => {
+     const districtsUpdated = { ...districts, [item]: !districts[item] };
+     setDistricts(districtsUpdated);
+   } */
 
-  const handleChange = (e) =>{
-    
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    const dataType = typeof formData[name];
+    const newFormData = {};
+    if(dataType === 'boolean'){
+      newFormData = {...formData, [name]: e.target.checked}
+    }
+    if(dataType === 'object'){
+      newFormData = {...formData, [name]: {...formData[name], [value]: e.target.checked}}
+    }
+    setFormData(newFormData)
   }
 
   const handleSubmit = (e) => {
@@ -45,14 +55,28 @@ const Filters = () => {
           <h2 className='filters__label'>Цена</h2>
           <h2 className='filters__label'>Ассортимент</h2>
           <h2 className='filters__label'>Качество обслуживания</h2>
-          <CheckBox id='delivery' checked={delivery} setChecked={e => setDelivery(e.target.checked)}>Наличие доставки</CheckBox>
-          <CheckBox id='eatPlace' checked={eatPlace} setChecked={e => setEatPlace(e.target.checked)}>Наличие места для приема пищи</CheckBox>
+          <CheckBox
+            id='delivery'
+            name='delivery'
+            value='delivery'
+            checked={delivery}
+            setChecked={e => setDelivery(e.target.checked)}>
+            Наличие доставки
+          </CheckBox>
+          <CheckBox
+            id='eatPlace'
+            name='eatPlace'
+            value='eatPlace'
+            checked={eatPlace}
+            setChecked={e => setEatPlace(e.target.checked)}>
+            Наличие места для приема пищи
+          </CheckBox>
         </div>
         <div className='form-group'>
           <h2 className='form-title'>Районы</h2>
           <div className='filters__districts'>
             {Object.keys(districts).map((item, index) => {
-              return <CheckBox id={item} value={item} checked={districts[item]} setChecked={e => updateDistricts(e.target.value)}>{item}</CheckBox>
+              return <CheckBox id={item} name={districts } value={item} checked={districts[item]} setChecked={e => updateDistricts(e.target.value)}>{item}</CheckBox>
             })}
           </div>
         </div> */}
