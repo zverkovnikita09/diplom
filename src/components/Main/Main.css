@@ -40,8 +40,3 @@
   left: calc(50% - 86px /2);
   transition: 0.5s;
 }
-
-.main__button-down.active{
-  transform: translateY(30px);
-  opacity: 0;
-}

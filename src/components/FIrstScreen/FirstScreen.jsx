@@ -15,12 +15,17 @@ const FirstScreen = ({ pages }) => {
     onSwiper={setSwiper}
     modules={[Mousewheel]}
     followFinger={false}
+    allowTouchMove={true}
     speed={1000}
-    
+    breakpoints={{
+      767: {
+        allowTouchMove: false
+      }
+    }}
     className="scrollable"
   >
-    <SwiperSlide><Main scrollPage={()=>swiper.slideTo(1)}/></SwiperSlide>
-    <SwiperSlide><Filters/></SwiperSlide>
+    <SwiperSlide><Main scrollPage={() => swiper.slideTo(1)} /></SwiperSlide>
+    <SwiperSlide><Filters /></SwiperSlide>
   </Swiper>
 }
 

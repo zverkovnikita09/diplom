@@ -1,11 +1,5 @@
-.map {
-  display: grid;
-  place-content: center;
-}
-
 .map__container{
-  height: 50vh;
-  width: 80vw;
-  border-radius: 50px;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
