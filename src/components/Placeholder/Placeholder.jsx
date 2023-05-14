@@ -1,8 +1,8 @@
 import './Placeholder.css'
 
-const Placeholder = () => {
-  return <div class="placeholder">
-    <div class="placeholder__animated-background"/>
+const Placeholder = ({className, ...props}) => {
+  return <div className={`placeholder ${className}`} {...props}>
+    <div className='placeholder__activity' />
   </div>
 }
 

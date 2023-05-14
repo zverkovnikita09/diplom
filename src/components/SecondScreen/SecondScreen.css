@@ -1,22 +1,15 @@
 .second-screen {
-  background-color: #141517;
-  min-height: 100vh;
-  padding-bottom: 5vh;
-}
-.second-screen__title{
-  color: #fff;
-  text-align: center;
-  padding: 30px 0;
-  height: 15vh;
-  display: grid;
-  place-content: center;
+  background-image: url(../../assets/img/background_screen2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding: 15px;
 }
 .second-screen__content{
+  height: 100%;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 500px 1fr;
   border-radius: 10px;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 80vh;
-  width: 100%;
 }

@@ -25,6 +25,8 @@
   padding: 30px;
   background-color: #fff;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   column-gap: 15px;
 }
 
@@ -46,4 +48,18 @@
 
 .filters__label {
   display: flex;
+}
+
+.filters__submit{
+  background-color: #71C13B;
+  font-weight: 600;
+  padding: 10px 30px;
+  width: max-content;
+  align-self: center;
+  border-radius: 15px;
+  transition: 0.5s;
+}
+
+.filters__submit:hover{
+  background-color: #599e2c;
 }

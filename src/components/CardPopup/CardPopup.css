@@ -24,8 +24,22 @@
 
 .card-popup__content {
   background-color: #fff;
-  border-radius: 50px;
+  border-radius: 15px;
   padding: 25px;
-  min-height: 80vh;
-  min-width: 50vw;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  column-gap: 25px;
+  width: 1250px;
+}
+
+.card-popup__image {
+  height: 350px;
+}
+
+.card-popup__image img{
+  object-fit: cover;
+}
+
+.card-popup__title{
+  font-size: 30px;
 }

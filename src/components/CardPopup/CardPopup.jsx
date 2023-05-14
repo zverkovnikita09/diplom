@@ -6,8 +6,13 @@ const CardPopup = ({ active, setActive }) => {
   return <Portal>
     <div className={`card-popup ${active ? 'active' : ''}`} onClick={() => setActive(false)} tabIndex={0}>
       <div className='card-popup__content' onClick={e => e.stopPropagation()}>
-        <div className='card-popup__image'>
-          <img src={img} />
+        <div className='card-popup__left-block'>
+          <div className='card-popup__image'>
+            <img src={img} width='100%' height='100%'/>
+          </div>
+        </div>
+        <div className='card-popup__right-block'>
+          <p className='card-popup__title'>Шавушечная</p>
         </div>
       </div>
     </div>
