@@ -7,6 +7,15 @@
   height: 100%;
   color: #dbbb37;
   box-shadow: 2px 0 2px 0 rgb(0 0 0 / 10%);
+  overflow: auto;
+}
+
+.result:hover {
+  scrollbar-color: #dbbb37 #d6ae3e;
+}
+
+.result:hover::-webkit-scrollbar-thumb {
+  background-color: #dbbb37;
 }
 
 .result__title {

@@ -18,7 +18,7 @@ const SecondScreen = () => {
   })
 
   useEffect(() => {
-    fetch('http://diplom.online.swtest.ru/api/filtration?district_id=1')
+    fetch('http://diplom.online.swtest.ru/api/filtration')
       .then(res => res.json())
       .then(res => setResult(res))
       .catch(e => setError(true))
