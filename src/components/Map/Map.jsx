@@ -3,8 +3,7 @@ import './Map.css'
 import { YMaps, Map, Placemark, Clusterer } from "react-yandex-maps";
 import Placeholder from '../Placeholder/Placeholder';
 
-const SearchMap = () => {
-  const [center, setCenter] = useState([51.665944, 39.191717]);
+const SearchMap = ({center}) => {
   const [zoom, setZoom] = useState(10);
   const [loading, setLoading] = useState(true);
   const map = useRef(null)

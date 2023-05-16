@@ -5,18 +5,33 @@ import { useEffect, useState } from 'react';
 
 const SecondScreen = () => {
   const [result, setResult] = useState([]);
-  const [loading, setLoading] = useState();
-  useEffect(()=>{
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [mapCenter, setMapCenter] = useState([51.665944, 39.191717]);
+  const [params, setParams] = useState({
+    delivery: false,
+    eatPlace: false,
+    priceFrom: 0,
+    priceTo: 0,
+    district: '',
+    sortBy: '',
+  })
+
+  useEffect(() => {
     fetch('http://diplom.online.swtest.ru/api/filtration?district_id=1')
-    .then(res=>res.json())
-    .then(res=>console.log(res))
+      .then(res => res.json())
+      .then(res => setResult(res))
+      .catch(e => setError(true))
+      .finally(() => setLoading(false))
   }, [])
 
   return <>
     <div className='second-screen'>
       <div className='second-screen__content'>
-        <Result />
-        <Map />
+        <Result items={result} 
+        loading={loading} 
+        sortBy={params.sortBy}/>
+        <Map center={mapCenter} />
       </div>
     </div>
   </>

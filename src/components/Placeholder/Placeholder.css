@@ -3,6 +3,7 @@
   background-color: rgb(211, 211, 211);
   z-index: 10;
   overflow: hidden;
+  height: 100%;
 }
 
 .placeholder__activity {

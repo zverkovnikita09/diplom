@@ -6,7 +6,7 @@
 }
 
 .result-item:not(:last-child) {
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #ad8810;
 }
 
 .result-item__image {
