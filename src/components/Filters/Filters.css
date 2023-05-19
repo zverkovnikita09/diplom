@@ -29,9 +29,8 @@
 
 .filters__form {
   display: flex;
-  row-gap: 20px;
+  row-gap: 5px;
   flex-direction: column;
-  justify-content: space-between;
   color: #dbbb37;
 }
 
@@ -57,8 +56,8 @@
 
 .filters__price-block {
   display: flex;
-  column-gap: 15px;
-  font-size: 18px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .filters__price-input {
@@ -72,12 +71,26 @@
   text-align: center;
   background-color: transparent;
   color: inherit;
+  transition: 0.1s;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.33), inset 0px -2px 4px rgba(0, 0, 0, 0.32);
 }
-.filters__prace-label{
-  position: relative;
+
+.filters__price-input:disabled {
+  filter: grayscale(1);
+  background-color: #646464;
 }
-.filters__prace-label::after{
+
+.filters__price-label {
+  position: relative;
+  transition: 0.1s;
+}
+
+.filters__price-label.disabled {
+  filter: grayscale(1);
+  user-select: none;
+}
+
+.filters__price-label::after {
   content: '\20BD';
   font-weight: 700;
   position: absolute;
@@ -85,12 +98,27 @@
   top: 5px;
 }
 
-.filters__districts-block{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 25px;
+.filters__districts-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-.filters__other-params{
+.filters__radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  gap: 10px 30px;
+}
+
+.filters__other-params {
   width: 100%;
+}
+
+.filters__form-group {
+  display: flex;
+  column-gap: 15px;
+  font-size: 18px;
+  margin-bottom: 15px;
 }

@@ -5,33 +5,52 @@ import CheckBox from '../UI/CheckBox/CheckBox';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import RadioButton from '../UI/RadioButton/RadioButton';
 
-const Filters = () => {
+const Filters = ({ districts }) => {
   const navigate = useNavigate();
+  const [price, setPrice] = useState({
+    price_from: 100,
+    price_to: 400
+  })
+  const [priceDisabled, setPriceDisabled] = useState(false)
   const [formData, setFormData] = useState({
     delivery: false,
-    eatPlace: false,
-    priceFrom: 0,
-    priceTo: 0,
-    district: 'Коминтерновский',
+    foodcort: false,
+    price_from: 100,
+    price_to: 400,
+    district: 0,
     sortBy: '',
   })
 
   const districtChange = (e) => {
-    setFormData({ ...formData, district: e.target.value })
+    setFormData({ ...formData, district: Number(e.target.value) })
   }
 
   const priceRound = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     if (value > 400) {
-      setFormData({ ...formData, [name]: 400 })
+      setFormData({ ...formData, [name]: 400 });
+      setPrice({ ...price, [name]: 400 });
       return
     }
     if (value < 100) {
-      setFormData({ ...formData, [name]: 100 })
+      setFormData({ ...formData, [name]: 100 });
+      setPrice({ ...price, [name]: 100 });
       return
     }
+    setPrice({ ...price, [name]: value })
     setFormData({ ...formData, [name]: Math.round(value / 10) * 10 })
+  }
+
+  const disablePrice = (e) => {
+    const checked = e.target.checked;
+    if (checked) {
+      setFormData({ ...formData, price_from: 0, price_to: 0 })
+    }
+    else {
+      setFormData({ ...formData, price_from: price.price_from, price_to: price.price_to })
+    }
+    setPriceDisabled(checked)
   }
 
   const handleSubmit = (e) => {
@@ -39,6 +58,10 @@ const Filters = () => {
     let params = {};
     for (const param in formData) {
       if (formData[param]) {
+        if (typeof formData[param] === 'boolean') {
+          params[param] = Number(formData[param]);
+          continue
+        }
         params[param] = formData[param];
       }
     }
@@ -55,66 +78,58 @@ const Filters = () => {
         <div className='filters__block'>
           <h2 className='filters__title'>ЦЕНА</h2>
           <div className='filters__price-block'>
-            <label className='filters__prace-label'>
-              от
-              <input type='text' defaultValue={100} className='filters__price-input' onBlur={priceRound} />
-            </label>
-            <label className='filters__prace-label'>
-              до
-              <input type='text' defaultValue={400} className='filters__price-input' onBlur={priceRound} />
-            </label>
+            <div className='filters__form-group'>
+              <label className={`filters__price-label${priceDisabled ? ' disabled' : ''}`}>
+                от
+                <input type='text'
+                  name='price_from'
+                  value={price.price_from}
+                  className='filters__price-input'
+                  onBlur={priceRound}
+                  disabled={priceDisabled}
+                  onChange={e => setPrice({ ...price, [e.target.name]: e.target.value })} />
+              </label>
+              <label className={`filters__price-label${priceDisabled ? ' disabled' : ''}`}>
+                до
+                <input type='text'
+                  name='price_to'
+                  value={price.price_to}
+                  className='filters__price-input'
+                  onBlur={priceRound}
+                  disabled={priceDisabled}
+                  onChange={e => setPrice({ ...price, [e.target.name]: e.target.value })} />
+              </label>
+            </div>
+            <CheckBox checked={priceDisabled}
+              id='priceCheck'
+              setChecked={disablePrice}>
+              Не имеет значения
+            </CheckBox>
           </div>
         </div>
         <div className='filters__block'>
           <h2 className='filters__title'>РАЙОН</h2>
           <div className='filters__districts-block'>
+            <div className='filters__radio-group'>
+              {districts?.length ? districts.map((district, index) => {
+                return <RadioButton
+                  key={district.id}
+                  id={`district${index}`}
+                  name='district'
+                  value={district.id}
+                  checked={formData.district === district.id}
+                  setChecked={districtChange}>
+                  {district.title}
+                </RadioButton>
+              }) : null}
+            </div>
             <RadioButton
-              id='district1'
+              id='district_none'
               name='district'
-              value='Коминтерновский'
-              checked={formData.district === 'Коминтерновский'}
+              value={0}
+              checked={formData.district === 0}
               setChecked={districtChange}>
-              Коминтерновский
-            </RadioButton>
-            <RadioButton
-              id='district2'
-              name='district'
-              value='Железнодорожный'
-              checked={formData.district === 'Железнодорожный'}
-              setChecked={districtChange}>
-              Железнодорожный
-            </RadioButton>
-            <RadioButton
-              id='district3'
-              name='district'
-              value='Центральный'
-              checked={formData.district === 'Центральный'}
-              setChecked={districtChange}>
-              Центральный
-            </RadioButton>
-            <RadioButton
-              id='district4'
-              name='district'
-              value='Левобережный'
-              checked={formData.district === 'Левобережный'}
-              setChecked={districtChange}>
-              Левобережный
-            </RadioButton>
-            <RadioButton
-              id='district5'
-              name='district'
-              value='Ленинский'
-              checked={formData.district === 'Ленинский'}
-              setChecked={districtChange}>
-              Ленинский
-            </RadioButton>
-            <RadioButton
-              id='district6'
-              name='district'
-              value='Советский'
-              checked={formData.district === 'Советский'}
-              setChecked={districtChange}>
-              Советский
+              Не выбрано
             </RadioButton>
           </div>
         </div>
@@ -130,11 +145,11 @@ const Filters = () => {
               Наличие доставки
             </CheckBox>
             <CheckBox
-              id='eatPlace'
-              name='eatPlace'
-              value='eatPlace'
-              checked={formData.eatPlace}
-              setChecked={e => setFormData({ ...formData, eatPlace: e.target.checked })}>
+              id='foodcort'
+              name='foodcort'
+              value='foodcort'
+              checked={formData.foodcort}
+              setChecked={e => setFormData({ ...formData, foodcort: e.target.checked })}>
               Наличие места для приема пищи
             </CheckBox>
           </div>

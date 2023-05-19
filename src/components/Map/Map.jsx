@@ -1,13 +1,18 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Map.css'
 import { YMaps, Map, Placemark, Clusterer } from "react-yandex-maps";
 import Placeholder from '../Placeholder/Placeholder';
 
-const SearchMap = ({center}) => {
-  const [zoom, setZoom] = useState(10);
+const SearchMap = ({ center, items, zoom }) => {
   const [loading, setLoading] = useState(true);
-  const map = useRef(null)
-  const placeMarkCollection = [];
+  const map = useRef(null);
+
+  useEffect(() => {
+    if (map.current) {
+      map.current.setZoom(zoom);
+      map.current.panTo(center);
+    }
+  }, [center, zoom])
 
   return <div className='map__container'>
     {loading ? <Placeholder /> : null}
@@ -17,6 +22,17 @@ const SearchMap = ({center}) => {
         instanceRef={map}
         onLoad={() => setLoading(false)}
       >
+        <Clusterer
+          options={{
+            groupByCoordinates: false,
+          }}>
+          {items.length ? items.map((item, index) => {
+            return <Placemark key={index} geometry={item.coordinates}
+              options={{
+                preset: 'islands#dotIcon',
+              }} />
+          }) : null}
+        </Clusterer>
       </Map>
     </YMaps>
   </div>

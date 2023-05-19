@@ -1,5 +1,5 @@
 .result-item {
-  height: 150px;
+  min-height: 150px;
   display: flex;
   column-gap: 20px;
   padding: 20px 0;
@@ -9,8 +9,13 @@
   border-bottom: 2px solid #ad8810;
 }
 
+.result-item:last-child{
+  padding-bottom: 0;
+}
+
 .result-item__image {
   width: 200px;
+  max-height: 110px;
 }
 
 .result-item__image img {
@@ -22,7 +27,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  row-gap: 15px;
 }
 
 .result-item__title {
@@ -50,21 +55,9 @@
   font-weight: 600;
   cursor: pointer;
   position: relative;
+  text-align: left;
+  color: inherit;
 }
-
-/* .result-item__geo::after {
-  content: 'Показать на карте';
-  position: absolute;
-  bottom: -18px;
-  left: 5px;
-  color: #828282;
-  font-size: 15px;
-  visibility: hidden;
-}
-
-.result-item__geo:hover:after {
-  visibility: visible;
-} */
 
 .result-item__more{
   width: max-content;
