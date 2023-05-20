@@ -30,7 +30,13 @@ const SearchMap = ({ center, items, zoom }) => {
             return <Placemark key={index} geometry={item.coordinates}
               options={{
                 preset: 'islands#dotIcon',
-              }} />
+              }}
+              properties={
+                {
+                  hintContent: item.title,
+                 /*  balloonContentHeader: item.title,
+                  balloonContentBody: item.text, */
+                }} />
           }) : null}
         </Clusterer>
       </Map>

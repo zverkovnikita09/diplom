@@ -3,3 +3,9 @@
   width: 100%;
   overflow: hidden;
 }
+
+@media (max-width: 992px){
+  .map__container{
+    height: 60vh;
+  }
+}

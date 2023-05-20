@@ -1,9 +1,10 @@
 import './Filters.css'
-import background from '../../assets/img/background_filters.png'
+import background from '../../assets/img/background_filters.webp'
 import { useState } from 'react'
 import CheckBox from '../UI/CheckBox/CheckBox';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import RadioButton from '../UI/RadioButton/RadioButton';
+import ReactSlider from 'react-slider';
 
 const Filters = ({ districts }) => {
   const navigate = useNavigate();
@@ -17,8 +18,7 @@ const Filters = ({ districts }) => {
     foodcort: false,
     price_from: 100,
     price_to: 400,
-    district: 0,
-    sortBy: '',
+    district: 0
   })
 
   const districtChange = (e) => {
@@ -38,11 +38,11 @@ const Filters = ({ districts }) => {
       setPrice({ ...price, [name]: 100 });
       return
     }
-    setPrice({ ...price, [name]: value })
+    setPrice({ ...price, [name]: Math.round(value / 10) * 10 })
     setFormData({ ...formData, [name]: Math.round(value / 10) * 10 })
   }
 
-  const disablePrice = (e) => {
+  const toDisablePrice = (e) => {
     const checked = e.target.checked;
     if (checked) {
       setFormData({ ...formData, price_from: 0, price_to: 0 })
@@ -51,6 +51,12 @@ const Filters = ({ districts }) => {
       setFormData({ ...formData, price_from: price.price_from, price_to: price.price_to })
     }
     setPriceDisabled(checked)
+  }
+
+  const handleSliderChange = (value) => {
+    const [price_from, price_to] = value;
+    setPrice({ price_from, price_to })
+    setFormData({ ...formData, price_from, price_to })
   }
 
   const handleSubmit = (e) => {
@@ -100,9 +106,22 @@ const Filters = ({ districts }) => {
                   onChange={e => setPrice({ ...price, [e.target.name]: e.target.value })} />
               </label>
             </div>
+            <ReactSlider
+              className="filters__slider"
+              thumbClassName={`filters__slider-thumb`}
+              trackClassName="filters__slider-track"
+              defaultValue={[formData.price_from, formData.price_to]}
+              value={[formData.price_from, formData.price_to]}
+              min={100}
+              max={400}
+              onChange={handleSliderChange}
+              minDistance={0}
+              step={10}
+              disabled={priceDisabled}
+            />
             <CheckBox checked={priceDisabled}
               id='priceCheck'
-              setChecked={disablePrice}>
+              setChecked={toDisablePrice}>
               Не имеет значения
             </CheckBox>
           </div>

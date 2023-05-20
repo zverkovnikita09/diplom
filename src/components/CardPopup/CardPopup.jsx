@@ -1,20 +1,44 @@
+import { Rating } from '@mui/material';
 import Portal from '../Portal/Portal';
 import './CardPopup.css'
-import img from '../../assets/img/placeholder.webp'
+import { HiCheck } from 'react-icons/hi'
+import { HiXMark } from 'react-icons/hi2'
 
-const CardPopup = ({ active, setActive }) => {
+const CardPopup = ({ active, setActive, data }) => {
   return <Portal>
     <div className={`card-popup ${active ? 'active' : ''}`} onClick={() => setActive(false)} tabIndex={0}>
       <div className='card-popup__content' onClick={e => e.stopPropagation()}>
-        <p style={{textAlign: 'center'}}>Данная фича еще в разработке...</p>
-        {/* <div className='card-popup__left-block'>
+        <button className='card-popup__close-button' onClick={() => setActive(false)}>
+          <HiXMark />
+        </button>
+        <div className='card-popup__left-block'>
           <div className='card-popup__image'>
-            <img src={img} width='100%' height='100%'/>
+            <img src={`http://front.tgbotonline.online/${data?.img}`} width='100%' height='100%' alt='Изображение' />
           </div>
         </div>
         <div className='card-popup__right-block'>
-          <p className='card-popup__title'>Шавушечная</p>
-        </div> */}
+          <div className='card-popup__rating-block'>
+            <p className='card-popup__title'>{data?.title}</p>
+            <Rating name="half-rating-read" defaultValue={5} precision={1} readOnly size="large" />
+          </div>
+          <div className='card-popup__rating-block'>
+            Качество обслуживания
+            <Rating name="half-rating-read" value={data?.service_quality ?? 0} precision={1} readOnly size='small' />
+          </div>
+          <div className='card-popup__rating-block'>
+            Ассортимент
+            <Rating name="half-rating-read" value={data?.assortment ?? 0} precision={1} readOnly size='small' />
+          </div>
+          <div className='card-popup__rating-block'>
+            Доставка
+            {data?.delivery ? <HiCheck color='green' size={25} /> : <HiXMark color='red' size={25} />}
+          </div>
+          <div className='card-popup__rating-block'>
+            Место для приема пищи
+            {data?.foodcort ? <HiCheck color='green' size={25} /> : <HiXMark color='red' size={25} />}
+          </div>
+          <div className='card-popup__description' dangerouslySetInnerHTML={{ __html: data?.descr }} />
+        </div>
       </div>
     </div>
   </Portal>

@@ -13,6 +13,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.15s, visibility 0s 0.15s;
+  color: #fff;
 }
 
 .card-popup.active {
@@ -23,17 +24,19 @@
 }
 
 .card-popup__content {
-  background-color: #fff;
+  position: relative;
+  background-color: #151515;
   border-radius: 15px;
   padding: 25px;
   display: grid;
-  grid-template-columns: 500px 1fr;
-  column-gap: 25px;
-  width: 1250px;
+  grid-template-columns: auto 1fr;
+  gap: 25px;
+  width: 1000px;
 }
 
 .card-popup__image {
-  height: 350px;
+  height: 300px;
+  width: 300px;
 }
 
 .card-popup__image img{
@@ -42,4 +45,38 @@
 
 .card-popup__title{
   font-size: 30px;
+}
+
+.card-popup__description{
+  margin-top: 30px;
+}
+
+.card-popup__rating-block{
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  column-gap: 10px;
+  font-size: 18px;
+}
+
+.card-popup__close-button{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 25px;
+  color: inherit;
+}
+
+@media (max-width: 1024px) {
+  .card-popup__content{
+    grid-template-columns: 1fr;
+    width: 90vw;
+  }
+  .card-popup__left-block{
+    display: flex;
+    justify-content: center;
+  }
+  .card-popup__close-button{
+    top: 3px;
+  }
 }

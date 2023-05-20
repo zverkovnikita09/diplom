@@ -1,22 +1,22 @@
 import geoIcon from '../../assets/img/geoIcon.png'
 import './ResultItem.css'
 
-const ResultItem = ({ data, setPopupActive, showOnMap }) => {
-  const { img, title, address, price_from, coordinates } = data;
+const ResultItem = ({ data, openInfo, showOnMap }) => {
+  const { img, title, address, price_from, coordinates, price_to } = data;
   return <div className='result-item'>
     <div className='result-item__image'>
       <img src={`http://front.tgbotonline.online/${img}`} width='100%' height='100%' />
     </div>
     <div className='result-item__content'>
       <h2 className='result-item__title'>{title}</h2>
-      <p className='result-item__sort'>Цена: от {price_from}р</p>
+      <p className='result-item__sort'>Цена: от {price_from}р до {price_to}р</p>
       <button className='result-item__geo' onClick={() => showOnMap(coordinates)}>
         <div className='result-item__icon'>
           <img src={geoIcon} alt="иконка геолокации" width='100%' height='100%' />
         </div>
         {address}
       </button>
-      <button className='result-item__more' onClick={setPopupActive}>Подробнее</button>
+      <button className='result-item__more' onClick={()=>openInfo(data)}>Подробнее</button>
     </div>
   </div>
 }

@@ -3,28 +3,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Mousewheel } from "swiper";
 import Main from '../Main/Main';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Filters from '../Filters/Filters';
 import { useSearchParams } from 'react-router-dom';
 
-const FirstScreen = ({ pages }) => {
+const FirstScreen = ({districts}) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const [swiper, setSwiper] = useState();
-  const [districts, setDistricts] = useState();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    fetch('http://front.tgbotonline.online/api/district')
-    .then(res=>res.json())
-    .then(res=>setDistricts(res))
-    .catch(e=>setError(true))
-    .finally(()=>setLoading(false))
-  }, [])
 
   return <Swiper
     direction={"vertical"}
-    initialSlide={Number(searchParams.get('page')) || 1}
+    initialSlide={Number(searchParams.get('page')) || 0}
     slidesPerView={1}
     mousewheel={true}
     onSwiper={setSwiper}

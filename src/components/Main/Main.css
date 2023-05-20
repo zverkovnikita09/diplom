@@ -48,17 +48,31 @@
   }
 }
 
-.shampur__left{
+.shampur__left {
   position: absolute;
   top: -100px;
   left: calc(50% - 70px/2);
   z-index: 2;
 }
 
-.shampur__right{
+.shampur__right {
   position: absolute;
   top: -100px;
   left: calc(50% - 70px/2);
   transform: scaleX(-1);
   z-index: 2;
+}
+
+@media (max-width: 767px) {
+  .main__title {
+    font-size: 25px;
+  }
+
+  .main__content {
+    padding: 0 10px;
+  }
+
+  .main__text {
+    font-size: 15px;
+  }
 }

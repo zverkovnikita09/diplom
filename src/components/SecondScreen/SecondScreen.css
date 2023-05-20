@@ -1,5 +1,5 @@
 .second-screen {
-  background-image: url(../../assets/img/background_screen2.png);
+  background-image: url(../../assets/img/background_screen2.webp);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -28,4 +28,14 @@
   left: 10px;
   z-index: 5;
   color: #dbbb37;
+}
+
+@media (max-width: 992px) {
+  .second-screen{
+    height: auto;
+  }
+  .second-screen__content {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
 }
