@@ -4,7 +4,7 @@ import CardPopup from '../CardPopup/CardPopup';
 import { useState } from 'react';
 import ResultItemPlaceholder from '../ResultItemPlaceholder/ResultItemPlaceholder';
 
-const Result = ({ items, loading, error, showOnMap }) => {
+function Result ({ items, loading, error, showOnMap }) {
   const [popupActive, setPopupActive] = useState(false);
   const [popupData, setPopupData] = useState(null)
 

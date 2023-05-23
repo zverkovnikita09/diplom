@@ -6,7 +6,7 @@ import { createSearchParams, useNavigate } from 'react-router-dom';
 import RadioButton from '../UI/RadioButton/RadioButton';
 import ReactSlider from 'react-slider';
 
-const Filters = ({ districts }) => {
+function Filters ({ districts }) {
   const navigate = useNavigate();
   const [price, setPrice] = useState({
     price_from: 100,
@@ -21,7 +21,7 @@ const Filters = ({ districts }) => {
     district: 0
   })
 
-  const districtChange = (e) => {
+  const handleDistrictChange = (e) => {
     setFormData({ ...formData, district: Number(e.target.value) })
   }
 
@@ -137,7 +137,7 @@ const Filters = ({ districts }) => {
                   name='district'
                   value={district.id}
                   checked={formData.district === district.id}
-                  setChecked={districtChange}>
+                  setChecked={handleDistrictChange}>
                   {district.title}
                 </RadioButton>
               }) : null}
@@ -147,7 +147,7 @@ const Filters = ({ districts }) => {
               name='district'
               value={0}
               checked={formData.district === 0}
-              setChecked={districtChange}>
+              setChecked={handleDistrictChange}>
               Не выбрано
             </RadioButton>
           </div>

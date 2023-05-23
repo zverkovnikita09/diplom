@@ -3,7 +3,7 @@ import './Map.css'
 import { YMaps, Map, Placemark, Clusterer } from "react-yandex-maps";
 import Placeholder from '../Placeholder/Placeholder';
 
-const SearchMap = ({ center, items, zoom }) => {
+function SearchMap ({ center, items, zoom }) {
   const [loading, setLoading] = useState(true);
   const map = useRef(null);
 
@@ -34,8 +34,6 @@ const SearchMap = ({ center, items, zoom }) => {
               properties={
                 {
                   hintContent: item.title,
-                 /*  balloonContentHeader: item.title,
-                  balloonContentBody: item.text, */
                 }} />
           }) : null}
         </Clusterer>

@@ -1,7 +1,7 @@
 import geoIcon from '../../assets/img/geoIcon.png'
 import './ResultItem.css'
 
-const ResultItem = ({ data, openInfo, showOnMap }) => {
+function ResultItem ({ data, openInfo, showOnMap }) {
   const { img, title, address, price_from, coordinates, price_to } = data;
   return <div className='result-item'>
     <div className='result-item__image'>

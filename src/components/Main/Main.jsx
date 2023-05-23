@@ -3,7 +3,7 @@ import backgroung from '../../assets/img/background_main.webp'
 import arrowDown from '../../assets/img/arrow-down.png'
 import shampur from '../../assets/img/shampur.png'
 
-const Main = ({ scrollPage }) => {
+function Main ({ scrollPage }) {
   return <div className='main'>
     <img src={backgroung} className='main__background' alt="Задний фон" width='100%' height='100%' />
     <div className='main__content'>

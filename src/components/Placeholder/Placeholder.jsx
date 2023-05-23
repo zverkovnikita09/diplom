@@ -1,6 +1,6 @@
 import './Placeholder.css'
 
-const Placeholder = ({className, ...props}) => {
+function Placeholder ({className, ...props}) {
   return <div className={`placeholder ${className}`} {...props}>
     <div className='placeholder__activity' />
   </div>

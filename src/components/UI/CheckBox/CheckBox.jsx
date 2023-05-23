@@ -1,6 +1,6 @@
 import './CheckBox.css'
 
-const CheckBox = ({id, children, checked, setChecked, ...props}) => {
+function CheckBox({id, children, checked, setChecked, ...props}) {
   return <div className='checkbox'>
     <label className='checkbox__label' htmlFor={id}>
       <input type='checkbox' 

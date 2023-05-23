@@ -4,7 +4,7 @@ import './CardPopup.css'
 import { HiCheck } from 'react-icons/hi'
 import { HiXMark } from 'react-icons/hi2'
 
-const CardPopup = ({ active, setActive, data }) => {
+function CardPopup({ active, setActive, data }) {
   return <Portal>
     <div className={`card-popup ${active ? 'active' : ''}`} onClick={() => setActive(false)} tabIndex={0}>
       <div className='card-popup__content' onClick={e => e.stopPropagation()}>
@@ -19,7 +19,7 @@ const CardPopup = ({ active, setActive, data }) => {
         <div className='card-popup__right-block'>
           <div className='card-popup__rating-block'>
             <p className='card-popup__title'>{data?.title}</p>
-            <Rating name="half-rating-read" defaultValue={5} precision={1} readOnly size="large" />
+            <Rating name="half-rating-read" value={data?.overall_rating ? Number(data?.overall_rating) : 0} precision={0.5} readOnly size="large" />
           </div>
           <div className='card-popup__rating-block'>
             Качество обслуживания

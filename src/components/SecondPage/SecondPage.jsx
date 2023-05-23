@@ -1,10 +1,10 @@
-import './SecondScreen.css';
+import './SecondPage.css';
 import Map from '../Map/Map'
 import Result from '../Result/Result';
 import { useEffect, useRef, useState } from 'react';
 import { Link, createSearchParams, useSearchParams } from 'react-router-dom';
 
-const SecondScreen = ({ districts }) => {
+function SecondPage({ districts }) {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -69,4 +69,4 @@ const SecondScreen = ({ districts }) => {
   </>
 }
 
-export default SecondScreen;
+export default SecondPage;

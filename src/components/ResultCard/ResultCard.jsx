@@ -1,6 +1,6 @@
 import './ResultCard.css'
 
-const ResultCard = ({ title, address }) => {
+function ResultCard ({ title, address }) {
   return <div className='result-card'>
     <div className='result-card__image'>
 

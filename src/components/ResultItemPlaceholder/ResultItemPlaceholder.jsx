@@ -1,7 +1,7 @@
 import Placeholder from '../Placeholder/Placeholder';
 import './ResultItemPlaceholder.css'
 
-const ResultItemPlaceholder = () => {
+function ResultItemPlaceholder() {
   return <div className='result-placeholder'>
     <Placeholder className='result-placeholder__image' />
     <div className='result-placeholder__content'>

@@ -1,6 +1,6 @@
 import './RadioButton.css'
 
-const RadioButton = ({ id, children, checked, setChecked, ...props }) => {
+function RadioButton ({ id, children, checked, setChecked, ...props }) {
   return <div className='radio'>
     <label className='radio__label' htmlFor={id}>
       <input type='radio'
