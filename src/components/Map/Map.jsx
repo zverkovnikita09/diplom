@@ -27,7 +27,7 @@ function SearchMap ({ center, items, zoom }) {
             groupByCoordinates: false,
           }}>
           {items.length ? items.map((item, index) => {
-            return <Placemark key={index} geometry={item.coordinates}
+            return <Placemark key={index} geometry={[item.coordinates.x, item.coordinates.y]}
               options={{
                 preset: 'islands#dotIcon',
               }}
