@@ -40,7 +40,7 @@ function SecondPage({ districts }) {
         validParams[param] = params[param];
       }
     }
-    fetch(`http://front.tgbotonline.online/api/filtration?${createSearchParams(validParams)}`)
+    fetch(`http://feniksrp.beget.tech/api/filtration?${createSearchParams(validParams)}`)
       .then(res => res.json())
       .then(res => setResult(res))
       .catch(e => setError(true))

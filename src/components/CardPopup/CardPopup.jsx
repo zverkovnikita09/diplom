@@ -13,7 +13,7 @@ function CardPopup({ active, setActive, data }) {
         </button>
         <div className='card-popup__left-block'>
           <div className='card-popup__image'>
-            <img src={`http://front.tgbotonline.online/${data?.img}`} width='100%' height='100%' alt='Изображение' />
+            <img src={`http://feniksrp.beget.tech/${data?.img}`} width='100%' height='100%' alt='Изображение' />
           </div>
         </div>
         <div className='card-popup__right-block'>

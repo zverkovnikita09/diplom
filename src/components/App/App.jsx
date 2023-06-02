@@ -11,7 +11,7 @@ function App() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('http://front.tgbotonline.online/api/district')
+    fetch('http://feniksrp.beget.tech/api/district')
       .then(res => res.json())
       .then(res => setDistricts(res))
       .catch(e => setError(true))

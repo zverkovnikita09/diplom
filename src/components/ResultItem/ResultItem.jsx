@@ -5,7 +5,7 @@ function ResultItem ({ data, openInfo, showOnMap }) {
   const { img, title, address, price_from, coordinates, price_to } = data;
   return <div className='result-item'>
     <div className='result-item__image'>
-      <img src={`http://front.tgbotonline.online/${img}`} width='100%' height='100%' />
+      <img src={`http://feniksrp.beget.tech/${img}`} width='100%' height='100%' />
     </div>
     <div className='result-item__content'>
       <h2 className='result-item__title'>{title}</h2>
